@@ -1,0 +1,18 @@
+.container {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 4px 4px;
+}
+
+.output {
+    font-size: 36px;
+    height: 52px;
+    background: #F3F4F6;
+    border-radius: 6px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 8px;
+    font-weight: 800;
+    color: #111827;
+}

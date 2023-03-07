@@ -1,8 +1,10 @@
 import {FC} from 'react'
-import { Button } from '../Button/Button'
+import { Button, ButtonColors, Buttonsizes } from '../Button/Button'
+import styles from './Equal.module.css'
+
 
 export const Equal:FC = () => {
-    return <div>
-        <Button></Button>
+    return <div className={styles.container}>
+        <Button size={Buttonsizes.large} color={ButtonColors.blue}>=</Button>
     </div>
 }

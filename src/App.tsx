@@ -1,10 +1,10 @@
 import React from 'react';
-import { Palitra } from './Components/Palitra/Palitra';
+import { Main } from './Components/Main/Main';
 
 function App() {
   return (
     <div className="App">
-      <Palitra/>
+      <Main/>
     </div>
   );
 }
