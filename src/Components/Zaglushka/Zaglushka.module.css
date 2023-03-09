@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.firsttext {
+    font-size: 14px;
+    font-weight: 500;
+    color: #5D5FEF;
+    margin: 12px 0 4px;
+}
+
+.secondtext {
+    font-size: 12px;
+    font-weight: 400;
+    color: #6B7280;
+    width: 106px;
+    margin: 0;
+
+    text-align: center;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
