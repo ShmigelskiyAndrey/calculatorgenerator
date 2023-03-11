@@ -6,4 +6,16 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 8px;
     padding: 4px 4px;
+
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.disable {
+    opacity: 0.4;
+    box-shadow: none;
+}
+
+.border {
+    box-shadow: none;
 }

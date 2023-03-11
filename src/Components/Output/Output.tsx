@@ -1,13 +1,35 @@
-import {FC} from 'react'
+import {FC, useState} from 'react'
 import styles from './Output.module.css' 
+import { useDrag } from 'react-dnd/dist/hooks'
+import cn from 'classnames';
 
-export const Output:FC = () => {
 
-    const handleDragStart = (event: React.DragEvent<HTMLDivElement>) => {
-        event.dataTransfer.setData('text', event.currentTarget.id);
-    }
+type Props={
+    disable?: boolean;
+    border?: boolean;
+}
 
-    return <div id="outout" draggable="true" onDragStart={handleDragStart} className={styles.container}>
+
+export const Output:FC<Props> = ({disable, border}) => {
+
+    const [candrag, setCandrag] = useState(true)
+
+    const [{ isDragging }, drag] = useDrag(() => ({
+        type: "div",
+        item: <Output/>,
+        collect: (monitor) => ({
+            isDragging: !!monitor.isDragging(),
+        }),
+        end: (item, monitor) => {
+            if (monitor.didDrop()) {
+                setCandrag(false);
+            }
+        },
+        canDrag: candrag && !disable,
+    }),[candrag]);
+
+    const classes = cn(styles.container, candrag === false && styles.notable, border && styles.border)
+    return <div ref={drag} className={classes}>
         <div className={styles.output}>0</div>
     </div>
 }

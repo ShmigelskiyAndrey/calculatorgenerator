@@ -1,27 +1,36 @@
-import {FC, useState} from 'react'
+import {FC, ReactElement, ReactNode, useState, cloneElement} from 'react'
 import styles from './Holst.module.css' 
 import { Switch } from '../Switch/Switch'
 import { Zaglushka } from '../Zaglushka/Zaglushka'
+import { useDrop } from 'react-dnd'
+
+
 
 export  const Holst:FC  = () => {
 
-    const [myArray, updateMyArray] = useState<string[]>([]);
+    const [holst, setHolst] = useState<ReactNode[]>([])
 
-    const enableDropping = (event: React.DragEvent<HTMLDivElement>) => { 
-        event.preventDefault();
-    }
+    const [, dropRef] = useDrop(() => ({
+        accept: "div",
+        drop: (item: ReactNode, monitor) => {
+            setHolst((holst) => [...holst, item]);
+        },
+        collect: (data) => ({
+            
+        })
+    }));
 
-    const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
-        const id = event.dataTransfer.getData('text');
-        console.log(`Somebody dropped an element with id: ${id}`);
-        updateMyArray( arr => [...arr, ]);
-        console.log(myArray)
-    }
+
 
     return <div className={styles.obertka}>
+
         <Switch/>
-        <div onDragOver={enableDropping} onDrop={handleDrop} className={styles.container}>
-            <Zaglushka/>
+        
+        <div ref={dropRef} className={styles.container}>   
+            {holst.length === 0 ? <Zaglushka/> : holst.map((item, i) =>{
+                const El = cloneElement(item as ReactElement, { key: i, disable: true, border: true});
+                return El;
+            })}
         </div>
     </div>
 }

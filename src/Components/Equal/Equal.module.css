@@ -2,4 +2,16 @@
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     padding: 4px 4px;
+
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.notable {
+    opacity: 0.4;
+    box-shadow: none;
+}
+
+.border {
+    box-shadow: none;
 }
