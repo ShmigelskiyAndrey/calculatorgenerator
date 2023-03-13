@@ -14,11 +14,11 @@ export const Operants:FC<Props> = ({disable, border}) => {
 
     const [candrag, setCandrag] = useState(true)
 
-    const [{ isDragging }, drag] = useDrag(() => ({
+    const [, drag] = useDrag(() => ({
         type: "div",
         item: <Operants/>,
         collect: (monitor) => ({
-            isDragging: !!monitor.isDragging(),
+            
         }),
         end: (item, monitor) => {
             if (monitor.didDrop()) {

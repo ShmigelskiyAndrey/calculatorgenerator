@@ -15,11 +15,11 @@ export const Equal:FC<Props> = ({disable, border}) => {
 
     const [candrag, setCandrag] = useState(true)
 
-    const [{ isDragging }, drag] = useDrag(() => ({
+    const [, drag] = useDrag(() => ({
         type: "div",
         item: <Equal/>,
         collect: (monitor) => ({
-            isDragging: !!monitor.isDragging(),
+        
         }),
         end: (item, monitor) => {
             if (monitor.didDrop()) {

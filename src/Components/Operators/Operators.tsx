@@ -8,17 +8,18 @@ import cn from 'classnames';
 type Props={
     disable?: boolean;
     border?: boolean;
+    state?: boolean;
 }
 
-export const Operators:FC<Props> = ({disable, border}) => {
+export const Operators:FC<Props> = ({disable, border, state}) => {
 
     const [candrag, setCandrag] = useState(true)
 
-    const [{ isDragging }, drag] = useDrag(() => ({
+    const [, drag] = useDrag(() => ({
         type: "div",
         item: <Operators/>,
         collect: (monitor) => ({
-            isDragging: !!monitor.isDragging(),
+           
         }),
         end: (item, monitor) => {
             if (monitor.didDrop()) {

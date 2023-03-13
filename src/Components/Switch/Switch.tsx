@@ -1,17 +1,27 @@
-import {FC} from 'react'
+import {FC, SyntheticEvent, useState} from 'react'
 import styles from './Switch.module.css' 
+import cn from 'classnames';
 
-export  const Switch:FC  = () => {
+type Props = {
+    onChange?: (status: boolean) => void;
+}
 
-    // const runtimeactivate = () => {
-    //     let elem1 = document.getElementById("constructor");
-    //     let elem2
-    //     elem1.classList.remove("selected");
-    //     elem2.classList.add("selected");
-    // }
+export  const Switch:FC<Props>  = ({onChange}) => {
+const [state, setState] = useState(true)
+
+
+    const onTogle = (status: boolean) => {
+        if(onChange){
+            onChange(status);
+            setState(status);
+        }
+    }
+
+    const btn1 = cn(styles.button, state === false && styles.selected)
+    const btn2 = cn(styles.button, state === true && styles.selected)
 
     return <div className={styles.container}>
-        <button id="runtime"  className={styles.button}> <img src="/icons/eye.svg" alt="Runtime" /> Runtime</button>
-        <button id="constructor" className={styles.selected}> <img src="/icons/selector.svg" alt="Constructor" /> Constructor</button>
+        <button id="runtime" onClick={() => onTogle(false)} className={btn1}> <img src="/icons/eye.svg" alt="Runtime" /> Runtime</button>
+        <button id="constructor" onClick={() => onTogle(true)} className={btn2}> <img src="/icons/selector.svg" alt="Constructor" /> Constructor</button>
     </div>
 }

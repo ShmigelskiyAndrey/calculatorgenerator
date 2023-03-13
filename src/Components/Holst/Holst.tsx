@@ -20,15 +20,17 @@ export  const Holst:FC  = () => {
         })
     }));
 
+    const [state, setState] = useState(true);
 
 
     return <div className={styles.obertka}>
 
-        <Switch/>
+        <Switch onChange={(status)=> setState(status)}/>
         
-        <div ref={dropRef} className={styles.container}>   
+        <div ref={dropRef} className={styles.container}>  
+        
             {holst.length === 0 ? <Zaglushka/> : holst.map((item, i) =>{
-                const El = cloneElement(item as ReactElement, { key: i, disable: true, border: true});
+                const El = cloneElement(item as ReactElement, { key: i, disable: true, border: true, constructor: state});
                 return El;
             })}
         </div>
